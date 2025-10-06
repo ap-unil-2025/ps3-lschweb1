@@ -32,8 +32,11 @@ def count_words(filename):
     """
     # TODO: Open file and count words
     # Hint: Use split() to separate words
-    pass
-
+    with open(filename, "r", encoding="utf-8") as f:
+        text = f.read()
+    # split() splits on any whitespace
+    words = text.split()
+    return len(words)
 
 def count_lines(filename):
     """
@@ -46,7 +49,8 @@ def count_lines(filename):
         int: Total number of lines
     """
     # TODO: Open file and count lines
-    pass
+    with open(filename, "r", encoding="utf-8") as f:
+        return sum(1 for _ in f)
 
 
 def count_characters(filename, include_spaces=True):
@@ -62,7 +66,12 @@ def count_characters(filename, include_spaces=True):
     """
     # TODO: Open file and count characters
     # If include_spaces is False, don't count spaces
-    pass
+    with open(filename, "r", encoding="utf-8") as f:
+        text = f.read()
+    if include_spaces:
+        return len(text)
+    # Do not count spaces (and other whitespace for robustness)
+    return sum(1 for ch in text if not ch.isspace())
 
 
 def find_longest_word(filename):
@@ -77,7 +86,20 @@ def find_longest_word(filename):
     """
     # TODO: Find the longest word
     # Hint: You might need to remove punctuation
-    pass
+def find_longest_word(filename):
+    import string
+    with open(filename, "r", encoding="utf-8") as f:
+        text = f.read()
+
+        # Remove punctuation, split into words
+        table = str.maketrans("", "", string.punctuation)
+        words = text.translate(table).split()
+
+        if not words:
+            return ""
+
+        # Return the first longest word
+        return max(words, key=len)
 
 
 def word_frequency(filename):
@@ -86,23 +108,25 @@ def word_frequency(filename):
     Convert words to lowercase and remove punctuation.
 
     Args:
-        filename (str): Name of the file to analyze
+    filename (str): Name of the file to analyze
 
     Returns:
-        dict: Dictionary with words as keys and frequencies as values
+    dict: Dictionary with words as keys and frequencies as values
     """
     import string
-
     frequency = {}
 
-    # TODO: Open file
-    # TODO: Read all words
-    # TODO: Convert to lowercase
-    # TODO: Remove punctuation (use string.punctuation)
-    # TODO: Count frequency of each word
+    with open(filename, "r", encoding="utf-8") as f:
+        text = f.read()
 
-    return frequency
+        # Lowercase and remove punctuation
+        text = text.lower()
+        table = str.maketrans("", "", string.punctuation)
+        words = text.translate(table).split()
 
+        for w in words:
+            frequency[w] = frequency.get(w, 0) + 1
+            return frequency
 
 def analyze_file(filename):
     """

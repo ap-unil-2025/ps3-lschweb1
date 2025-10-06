@@ -15,7 +15,7 @@ def celsius_to_fahrenheit(celsius):
         float: Temperature in Fahrenheit
     """
     # TODO: Implement this function
-    pass
+    return (celsius*9/5) + 32
 
 
 def fahrenheit_to_celsius(fahrenheit):
@@ -30,7 +30,7 @@ def fahrenheit_to_celsius(fahrenheit):
         float: Temperature in Celsius
     """
     # TODO: Implement this function
-    pass
+    return (fahrenheit - 32) * 5/9
 
 
 def temperature_converter():
@@ -51,7 +51,7 @@ def temperature_converter():
     # - Validate input
     # - Perform conversion
     # - Display result rounded to 2 decimal places
-    pass
+    # TODO: Implement the interactive convecter
 
 
 # Test cases (DO NOT MODIFY)
@@ -72,3 +72,5 @@ if __name__ == "__main__":
 
     # Run interactive converter
     temperature_converter()
+    print(celsius_to_fahrenheit(25)) # 25°C -> °F
+    print(fahrenheit_to_celsius(50)) # 50°F -> °C
