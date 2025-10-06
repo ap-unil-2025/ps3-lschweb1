@@ -1,3 +1,5 @@
+3a03b6c Restore yesterday's files from ps3-mechanicpanic
+64a2707 Add git_log.txt
 dbdf9cc Add my name and date
 7bcb689 Add GitHub Classroom autograding configuration
 2dc2daa Initial commit
